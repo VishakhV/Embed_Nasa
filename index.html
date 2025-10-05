@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Unity WebGL Launcher</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      background: #f5f5f5;
+    }
+
+    header {
+      background: #333;
+      color: white;
+      padding: 15px;
+    }
+
+    select, button {
+      font-size: 16px;
+      margin: 10px;
+      padding: 6px 12px;
+    }
+
+    iframe {
+      width: 90%;
+      height: 80vh;
+      border: 2px solid #ccc;
+      margin-top: 15px;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Unity Projects Launcher</h1>
+    <select id="projectSelect" onchange="loadProject()">
+      <option value="">-- Select Project --</option>
+      <option value="Project1/index.html">Map View Impact</option>
+      <option value="Project2/index.html">Kepler Orbit NEO</option>
+      <option value="Project3/index.html">NEO Mitigation</option>
+      <option value="Project4/index.html">City NEO Impact</option>
+    </select>
+  </header>
+
+  <div id="viewer">
+    <p style="padding: 20px; color: #666;">Select a project from the dropdown above to load it here.</p>
+  </div>
+
+  <script>
+    function loadProject() {
+      const select = document.getElementById("projectSelect");
+      const projectPath = select.value;
+      if (projectPath) {
+        document.getElementById("viewer").innerHTML =
+          `<iframe src="${projectPath}" allowfullscreen></iframe>`;
+      } else {
+        document.getElementById("viewer").innerHTML =
+          `<p style="padding: 20px; color: #666;">Select a project from the dropdown above to load it here.</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
